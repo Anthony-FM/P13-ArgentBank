@@ -205,7 +205,7 @@ paths:
           description: Update user account transaction
           required: true
           schema:
-            $ref: '#/definitions/OneTransactionResponse'
+            $ref: '#/definitions/EditOneTransactionResponse'
         
       produces:
         - application/json
@@ -308,3 +308,10 @@ definitions:
             type: string
           notes:
             type: string
+  EditOneTransactionResponse:
+    type: object
+    properties:
+      category:
+        type: string
+      notes:
+        type: string

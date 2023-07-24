@@ -69,6 +69,7 @@ paths:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
+          type: string
           required: true
       produces:
         - application/json
@@ -92,6 +93,7 @@ paths:
         - in: header
           name: Authorization
           description: Attach Bearer JWT token
+          type: string
           required: true
         - in: body
           name: body
@@ -110,6 +112,108 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /user/profile/{name}/transaction:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Account transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - name: name
+          type: string
+          in: path
+          required: true
+      description: API for {name} transaction
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get All Transactions data Successfully
+          schema:
+            $ref: '#/definitions/TransactionResponse'
+        '404':
+          description: Data Not found
+        '500':
+          description: Internal Server Error
+  /user/profile/{accountName}/transaction/{id}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Account get one transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - name: accountName
+          type: string
+          in: path
+          required: true
+        - name: id
+          type: string
+          in: path
+          required: true
+      description: API for one transaction
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Get The Transaction data Successfully
+          schema:
+            $ref: '#/definitions/OneTransactionResponse'
+        '404':
+          description: Data Not found
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for updating a user profile
+      parameters:
+        - name: accountName
+          type: string
+          in: path
+          required: true
+        - name: id
+          type: string
+          in: path
+          required: true
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: body
+          name: body
+          description: Update user account transaction
+          required: true
+          schema:
+            $ref: '#/definitions/OneTransactionResponse'
+        
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -164,3 +268,28 @@ definitions:
         type: string
       lastName:
         type: string
+  TransactionResponse:
+    type: array
+    items:
+      type: object
+      properties:
+        date: 
+          type: integer
+        description: 
+          type: string
+        amount: 
+          type: integer
+        balance:
+          type: integer
+  OneTransactionResponse:
+    type: object
+    properties:
+      transaction type: 
+        type: string
+      category:
+        type: array
+        items: 
+          type: string
+      notes:
+        type: string
+  

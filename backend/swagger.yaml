@@ -112,7 +112,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/profile/{name}/transaction:
+  /user/profile/{accountName}/transaction:
     get:
       security:
         - Bearer: []
@@ -125,7 +125,8 @@ paths:
           description: Attach Bearer JWT token
           type: string
           required: true
-        - name: name
+        - name: accountName
+          description: Name of the account
           type: string
           in: path
           required: true
@@ -155,10 +156,12 @@ paths:
           type: string
           required: true
         - name: accountName
+          description: Name of the account
           type: string
           in: path
           required: true
         - name: id
+          description: id of the account
           type: string
           in: path
           required: true
@@ -183,10 +186,12 @@ paths:
       description: API for updating a user profile
       parameters:
         - name: accountName
+          description: Name of the account
           type: string
           in: path
           required: true
         - name: id
+          description: id of the transaction
           type: string
           in: path
           required: true
@@ -284,12 +289,22 @@ definitions:
   OneTransactionResponse:
     type: object
     properties:
-      transaction type: 
+      id:
+        type: integer
+      date: 
+        type: integer
+      description: 
         type: string
-      category:
-        type: array
-        items: 
-          type: string
-      notes:
-        type: string
-  
+      amount: 
+        type: integer
+      balance:
+        type: integer
+      transaction:
+        type: object
+        properties:
+          transaction type: 
+            type: string
+          category:
+            type: string
+          notes:
+            type: string

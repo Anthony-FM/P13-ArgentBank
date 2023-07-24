@@ -305,13 +305,17 @@ definitions:
           transaction type: 
             type: string
           category:
-            type: string
+            type: array
+            items:
+              type: string
           notes:
             type: string
   EditOneTransactionResponse:
     type: object
     properties:
       category:
-        type: string
+        type: array
+        items:
+          type: string
       notes:
         type: string

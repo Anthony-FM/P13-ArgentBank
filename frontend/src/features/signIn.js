@@ -1,6 +1,6 @@
 import { createAction, createReducer } from '@reduxjs/toolkit'
 
-
+// State initial
 const initialState = {    
   error: '',    
   email: '',
@@ -13,7 +13,7 @@ const initialState = {
     
 }
 
-
+// Actions
 export const addError = createAction('add/error',
   (error) => ({
     payload: error
@@ -55,7 +55,7 @@ export const addLastname = createAction(
 export const toggleLogInLogOut = createAction('toggle/log')
 export const toggleLogOut = createAction('toggle/logOut')
 
-
+// Reducer
 export default createReducer(initialState, (builder) =>
   builder
     

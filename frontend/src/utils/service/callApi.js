@@ -1,5 +1,5 @@
+// Post: récupération des donnée de connection pour prendre le token
 export async function postJSONAuthentification(data) {   
-    console.log(data)
     const response = await fetch("http://localhost:3001/api/v1/user/login", {
     method: "POST", 
     headers: {
@@ -11,8 +11,8 @@ export async function postJSONAuthentification(data) {
     return result
 }
 
+// Post: Récupération des données du l'utilisateur grâce au token
 export async function tokenAuthentification(token){
-    console.log(token)
     const response = await fetch("http://localhost:3001/api/v1/user/profile", {
     method: "POST", 
     headers: {
@@ -25,6 +25,8 @@ export async function tokenAuthentification(token){
     return tokenResult
 }
 
+// Put: Modification des données dans la base de donnée 
+// grâce au token et aux données fourni en paramètres
 export async function fetchPutMethodName(data, token){
     const response = await fetch("http://localhost:3001/api/v1/user/profile", {
     method: "PUT", 

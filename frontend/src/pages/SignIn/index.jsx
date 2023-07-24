@@ -25,7 +25,6 @@ export async function handler(e, email, password){
          "password": password
        };
   const response = await postJSONAuthentification(data)
-  console.log(response)
 
   if(response.status === 400){
     dispatch(addError(response.message))

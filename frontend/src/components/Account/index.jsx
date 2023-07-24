@@ -1,4 +1,6 @@
+// CSS
 import './index.css'
+// composant
 import ButtonTransaction from '../ButtonTransaction'
 
 export default function Account({title, amount, description}){

@@ -1,12 +1,13 @@
 import { createAction, createReducer } from '@reduxjs/toolkit'
 
-
+//State initial
 const initialState = {
     toggleName: false,
     firstnameInput: '',
     lastnameInput: ''   
 }
 
+// Actions
 export const toggleEditName = createAction('toggle/changeName')
 
 export const addFirstnameInput = createAction('add/firstnameInput',
@@ -20,6 +21,7 @@ export const addLastnameInput = createAction('add/lastnameInput',
     })
 )
 
+// Reducer
 export default createReducer( initialState, (builder) => 
     builder
         .addCase(toggleEditName, (draft) => {

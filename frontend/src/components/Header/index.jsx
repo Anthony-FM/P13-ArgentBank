@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Logo from '../../assets/argentBankLogo.png'
 // hook
 import { useSelector, useDispatch } from 'react-redux'
+// selector
 import { selectUser } from '../../utils/selectors'
 // action
 import { toggleLogInLogOut, toggleLogOut } from '../../features/signIn'

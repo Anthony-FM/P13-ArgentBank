@@ -161,7 +161,7 @@ paths:
           in: path
           required: true
         - name: id
-          description: id of the account
+          description: id of the transaction
           type: string
           in: path
           required: true

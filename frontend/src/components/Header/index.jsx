@@ -9,11 +9,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectUser } from '../../utils/selectors'
 // action
 import { toggleLogInLogOut, toggleLogOut } from '../../features/signIn'
+// assest
+import USER from '../../assets/user.png'
 
 export default function Header(){
     const log = useSelector(selectUser).logIn
     const dispatch = useDispatch
     const textOfLog = log ? "Log Out" : "Sign In"
+    const firstname = useSelector(selectUser).firstname
+
+
     return <header>
         <nav className="main-nav">
             <Link className="main-nav-logo" to='/' onClick={() => dispatch(toggleLogOut())}>
@@ -29,10 +34,17 @@ export default function Header(){
                     {
                         log ?
                         (
-                            <Link className="main-nav-item" onClick={() => dispatch(toggleLogInLogOut)}>
-                            <i className="fa fa-user-circle i-padding"></i>
-                            {textOfLog}
-                            </Link>
+                            <div className='logContainer'>
+                                <div className='userContainer'>
+                                    <img src={USER} alt='user'/>
+                                    <h2>{firstname}</h2>
+                                </div>
+
+                                <Link className="main-nav-item" onClick={() => dispatch(toggleLogInLogOut)}>
+                                <i className="fa fa-user-circle i-padding"></i>
+                                {textOfLog}
+                                </Link>
+                            </div>
                         )
                         :
                         (

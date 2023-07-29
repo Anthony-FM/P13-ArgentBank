@@ -50,3 +50,25 @@
   .i-padding{
     padding-right: 5px;
   }
+.logContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userContainer img{
+  width: 15%;
+  height: 15%;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.userContainer h2{
+  font-size: 1rem;
+  color: #42b983;
+}

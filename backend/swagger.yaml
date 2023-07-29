@@ -142,7 +142,7 @@ paths:
           description: Data Not found
         '500':
           description: Internal Server Error
-  /user/profile/{accountID}/transaction/{id}:
+  /user/profile/transaction/{id}:
     get:
       security:
         - Bearer: []
@@ -317,6 +317,8 @@ definitions:
               type: string
           notes:
             type: string
+      accountId: 
+        type: integer
   EditOneTransactionResponse:
     type: object
     properties:

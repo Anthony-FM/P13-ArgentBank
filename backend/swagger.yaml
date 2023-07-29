@@ -112,7 +112,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/profile/{accountName}/transaction:
+  /user/profile/{accountID}/transaction:
     get:
       security:
         - Bearer: []
@@ -125,9 +125,9 @@ paths:
           description: Attach Bearer JWT token
           type: string
           required: true
-        - name: accountName
-          description: Name of the account
-          type: string
+        - name: accountID
+          description: id of the account
+          type: number
           in: path
           required: true
       description: API for {name} transaction
@@ -142,7 +142,7 @@ paths:
           description: Data Not found
         '500':
           description: Internal Server Error
-  /user/profile/{accountName}/transaction/{id}:
+  /user/profile/{accountID}/transaction/{id}:
     get:
       security:
         - Bearer: []
@@ -155,9 +155,9 @@ paths:
           description: Attach Bearer JWT token
           type: string
           required: true
-        - name: accountName
-          description: Name of the account
-          type: string
+        - name: accountID
+          description: id of the account
+          type: number
           in: path
           required: true
         - name: id
@@ -185,9 +185,9 @@ paths:
       summary: User Profile API
       description: API for updating a user profile
       parameters:
-        - name: accountName
+        - name: accountID
           description: Name of the account
-          type: string
+          type: number
           in: path
           required: true
         - name: id
@@ -213,7 +213,7 @@ paths:
         '200':
           description: User transaction retrieved successully
           schema:
-            $ref: '#/definitions/ApiResponse'
+            $ref: '#/definitions/EditOneTransactionResponse'
         '400':
           description: Invalid Fields
         '500':
@@ -274,18 +274,25 @@ definitions:
       lastName:
         type: string
   TransactionResponse:
-    type: array
-    items:
-      type: object
-      properties:
-        date: 
-          type: integer
-        description: 
-          type: string
-        amount: 
-          type: integer
-        balance:
-          type: integer
+    type: object
+    properties:
+      accountID:
+        type: integer
+      transactions:
+        type: array
+        items:
+          type: object
+          properties:
+            date: 
+              type: integer
+            description: 
+              type: string
+            amount: 
+              type: integer
+            balance:
+              type: integer
+            id: 
+              type: integer
   OneTransactionResponse:
     type: object
     properties:
@@ -314,8 +321,6 @@ definitions:
     type: object
     properties:
       category:
-        type: array
-        items:
-          type: string
+        type: string
       notes:
         type: string
